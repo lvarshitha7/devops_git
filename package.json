@@ -11,6 +11,7 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
+    "express": "^5.2.1",
     "terraform": "^1.23.1"
   }
 }
