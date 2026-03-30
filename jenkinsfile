@@ -1,17 +1,46 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'node25'
+    environment {
+        IMAGE_NAME = "justice-app"
+        CONTAINER_NAME = "justice-container"
+        PORT = "3000"
     }
 
     stages {
-        stage('Build') {
+
+        stage('Clone Code') {
             steps {
-                sh 'node -v'
-                sh 'npm -v'
+                git 'https://github.com/lvarshitha7/devops_git.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
                 sh 'npm install'
             }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t node-app .'
+            }
+        }
+
+       
+    }
+
+    post {
+        success {
+            echo 'Deployment Successful!'
+        }
+        failure {
+            echo 'Pipeline Failed!'
         }
     }
 }
