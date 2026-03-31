@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "nodejs-app"
+        IMAGE_NAME = "nodejs.app1"
         CONTAINER_NAME = "nodejs-app-container"
         APP_PORT = "3000"
     }
